@@ -4,6 +4,8 @@
 # anthroplus
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/WorldHealthOrganization/anthroplus/workflows/R-CMD-check/badge.svg)](https://github.com/WorldHealthOrganization/anthroplus/actions)
 <!-- badges: end -->
 
 The goal of `anthroplus` is to provide R functions for the application
