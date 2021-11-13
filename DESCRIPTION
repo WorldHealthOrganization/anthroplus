@@ -1,0 +1,30 @@
+Package: anthroplus
+Title: Computation of the WHO 2007 References for School-age Children and
+       Adolescents (5 to 19 years)
+Version: 0.0.0.9007
+Authors@R: c(person("Dirk", "Schumacher", ,
+                    "mail@dirk-schumacher.net", c("aut", "cre")),
+             person("Elaine", "Borghi", , "borghie@who.int", "ctb"),
+             person("Giovanna", "Gatica-Domínguez", ,
+                    "gaticag@who.int", "ctb"),
+             person(given = "World Health Organization", role = "cph"))
+Description: Provides WHO 2007 References for School-age Children and
+             Adolescents (5 to 19 years) (z-scores) with
+             confidence intervals and standard errors around the
+             prevalence estimates, taking into account complex sample designs.
+             More information on the methods is
+             available online:
+             <https://www.who.int/tools/growth-reference-data-for-5to19-years>.
+License: GPL (>= 3)
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
+Depends: 
+    R (>= 3.50)
+Suggests: 
+    testthat (>= 3.0.0),
+    survey
+Config/testthat/edition: 3
+Imports: 
+    anthro (>= 0.9.4.9003)
+LazyData: true

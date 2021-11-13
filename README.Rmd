@@ -1,0 +1,105 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# anthroplus
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of `anthroplus` is to provide R functions for the application of
+the WHO Reference 2007 for 5-19 years to monitor the growth of school-age
+children and adolescents.
+
+It is modeled after the [R Macros of the WHO Reference 2007](https://www.who.int/tools/growth-reference-data-for-5to19-years/application-tools).
+
+## Installation
+
+You can install the released version of anthroplus from [CRAN](https://CRAN.R-project.org) with:
+
+``` r
+install.packages("anthroplus")
+```
+
+And the development version from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("dirkschumacher/anthroplus")
+```
+## Example
+
+### Z-scores
+
+This function calculates z-scores for the three anthropometric indicators, 
+weight-for-age, height-for-age and body mass index (BMI)-for-age.
+
+```{r example}
+library(anthroplus)
+anthroplus_zscores(
+  sex = c("1", "f"),
+  age_in_months = c(100, 110),
+  height_in_cm = c(100, 90),
+  weight_in_kg = c(30, 40)
+)
+```
+
+The returned value is a `data.frame` that can further be processed or
+saved as a `.csv` file as in the original function.
+
+You can also use the function with a given dataset with `with`
+
+``` r
+your_data_set <- read.csv("my_survey.csv")
+with(
+  your_data_set,
+  anthroplus_zscores(
+    sex = sex, age_in_months = age,
+    weight_in_kg = weight, height_in_cm = height, 
+    oedema = oedema
+  )
+)
+```
+
+### Prevalence estimates
+
+The prevalence estimates are similar to `anthroplus_zscores`: again they
+take vectors instead of a data frame and column names for the
+aforementioned reasons.
+
+```{r example2}
+set.seed(1)
+anthroplus_prevalence(
+  sex = c(1, 2),
+  age_in_months = rpois(100, 100),
+  height_in_cm = rnorm(100, 100, 10),
+  weight_in_kg = rnorm(100, 40, 10)
+)[, c(1, 4, 5, 6)]
+```
+Using the function `with` it is easy to apply `anthroplus_prevalence` to a
+full dataset.
+
+To look at all parameters, type `?anthroplus_prevalence`.
+
+### Contribution
+
+Contributions in the form of issues are very welcome. In particular if you
+find any bugs.
+
+### Using the package in your own analyses
+
+The package has been tested thoroughly, but we cannot guarantee that
+there aren’t any bugs nor comes this with any warranty (as with all open
+source software). If you find a bug or cannot reproduce results obtained
+with other implementations, please post an issue.
