@@ -28,5 +28,5 @@ Config/testthat/edition: 3
 Imports: 
     anthro (>= 0.9.4.9003)
 Remotes:
-    dirkschumacher/anthro
+    worldhealthorganization/anthro
 LazyData: true
