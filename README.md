@@ -6,6 +6,8 @@
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/WorldHealthOrganization/anthroplus/workflows/R-CMD-check/badge.svg)](https://github.com/WorldHealthOrganization/anthroplus/actions)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/anthroplus)](https://CRAN.R-project.org/package=anthroplus)
 <!-- badges: end -->
 
 The goal of `anthroplus` is to provide R functions for the application
@@ -27,8 +29,8 @@ install.packages("anthroplus")
 And the development version from [GitHub](https://github.com/) with:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("dirkschumacher/anthroplus")
+# install.packages("remotes")
+remotes::install_github("worldhealthorganization/anthroplus")
 ```
 
 ## Example
