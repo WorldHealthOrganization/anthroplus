@@ -55,7 +55,7 @@ anthroplus_zscores(
 ```
 
 The returned value is a `data.frame` that can further be processed or
-saved as a `.csv` file as in the original function.
+saved as a `.csv` file.
 
 You can also use the function with a given dataset with `with`
 
@@ -64,18 +64,17 @@ your_data_set <- read.csv("my_survey.csv")
 with(
   your_data_set,
   anthroplus_zscores(
-    sex = sex, age_in_months = age,
-    weight_in_kg = weight, height_in_cm = height, 
-    oedema = oedema
+    sex = sex_column, age_in_months = age_column,
+    weight_in_kg = weight_column, height_in_cm = height_column,
+    oedema = oedema_column
   )
 )
 ```
 
 ### Prevalence estimates
 
-The prevalence estimates are similar to `anthroplus_zscores`: again they
-take vectors instead of a data frame and column names for the
-aforementioned reasons.
+The function to compute the prevalence estimates is similar to
+`anthroplus_zscores` in terms of the parameters.
 
 ``` r
 set.seed(1)
@@ -120,14 +119,8 @@ a full dataset.
 
 To look at all parameters, type `?anthroplus_prevalence`.
 
-### Contribution
+### Contributions
 
 Contributions in the form of issues are very welcome. In particular if
-you find any bugs.
-
-### Using the package in your own analyses
-
-The package has been tested thoroughly, but we cannot guarantee that
-there aren’t any bugs nor comes this with any warranty (as with all open
-source software). If you find a bug or cannot reproduce results obtained
-with other implementations, please post an issue.
+you find any bugs or cannot reproduce results obtained with other
+implementations.
