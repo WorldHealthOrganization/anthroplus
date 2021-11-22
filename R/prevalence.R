@@ -5,10 +5,7 @@
 #' and confidence intervals, and z-score summary statistics
 #' (mean and standard deviation) with most common cut-offs describing the
 #' full index distribution (-3, -2, -1, +1, +2, +3), and at disaggregated
-#' levels for all available factors (age, sex, type of residence,
-#' geographical regions, wealth quintiles, mother education and one
-#' additional factor the user is interested in and for
-#' which data are available).
+#' levels for all available factors (age and sex).
 #'
 #' In this function, all available (non-missing and non-flagged) z-score values
 #' are used for each indicator-specific prevalence
@@ -46,10 +43,7 @@
 #' and z-score summary statistics (mean and standard deviation) with most
 #' common cut-offs describing the full index
 #' distribution (-3, -2, -1, +1, +2, +3), and at disaggregated levels for
-#' all available factors (age, sex, type of residence,
-#' geographical regions, wealth quintiles, mother education and one
-#' additional factor the user is interested in and for which
-#' data are available).
+#' all available factors.
 #'
 #' The resulting columns are coded with a \emph{prefix},
 #' \emph{a prevalence indicator} and \emph{a suffix}:
