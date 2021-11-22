@@ -26,7 +26,5 @@ Suggests:
     survey
 Config/testthat/edition: 3
 Imports: 
-    anthro (>= 0.9.4.9003)
-Remotes:
-    worldhealthorganization/anthro
+    anthro (>= 1.0.0)
 LazyData: true
