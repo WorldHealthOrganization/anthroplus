@@ -20,6 +20,7 @@ test_that("zscore references match from previous implementation", {
   expect_equal(result$fbfa, data$fbfa)
   expect_equal(result$zwfa, data$zwfa)
   expect_equal(result$fwfa, data$fwfa)
+  expect_equal(result$cbmi, data$cbmi)
   expect_equal(result$age_in_months, data$agemons)
 })
 
