@@ -91,6 +91,7 @@
 #' between 61 and 120.
 #'
 #' @export
+#' @include zscores.R
 #' @importFrom anthro anthro_api_compute_prevalence
 #' @importFrom stats setNames
 anthroplus_prevalence <- function(sex,

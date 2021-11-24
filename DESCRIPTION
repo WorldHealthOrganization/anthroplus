@@ -28,3 +28,7 @@ Suggests:
     survey
 Config/testthat/edition: 3
 LazyData: true
+Collate:
+    'data.R'
+    'zscores.R'
+    'prevalence.R'
