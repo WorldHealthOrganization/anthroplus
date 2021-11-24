@@ -45,21 +45,14 @@ calculated if missing.}
 
 \item{weight_in_kg}{A numeric variable containing body weight information,
 which must be in kilograms. Weight-related z-scores are not
-calculated if missing.
-
-The following age cutoffs are used:
-\itemize{
-\item{Height-for-age} age between 61 and 228 months inclusive
-\item{Weight-for-age} age between 61 and 120 months inclusive
-\item{BMI-for-age} age between 61 and 228 months inclusive
-}}
+calculated if missing.}
 
 \item{sw}{An optional numeric vector containing the sampling weights.
 If NULL, no sampling weights are used.}
 
 \item{cluster}{An optional integer vector representing clusters. If the value
-is NULL this is treated as a survey without a cluster. This is also the case
-if all values are equal, then we assume there is also no cluster.}
+is NULL this is treated as a survey without clusters. This is also the case
+if all values are equal, then it is assumed there are also no clusters.}
 
 \item{strata}{An optional integer vector representing strata. Pass NULL to
 indicate that there are no strata.}
@@ -133,8 +126,8 @@ are used for each indicator-specific prevalence
 estimation (standard analysis).
 
 Note: the function temporarily sets the \code{survey} option
-\code{survey.lonely.psu} to "adjust" and then restores the original values.
-The function is a wrapper around the \code{survey} package to compute
+\code{survey.lonely.psu} to "adjust" and then restores the original value.
+It is a wrapper around the \code{survey} package to compute
 estimates for the different groups (e.g. by age or sex).
 
 If not all parameter values have equal length, parameter values will be
