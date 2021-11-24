@@ -5,3 +5,4 @@
 ^devel$
 ^README\.Rmd$
 ^\.github$
+^cran-comments\.md$
