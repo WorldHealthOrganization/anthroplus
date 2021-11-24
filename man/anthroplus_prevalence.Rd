@@ -143,3 +143,15 @@ repeated to match the maximum length.
 Only cases with age_in_months between 61 (including) and 228 months
 (including) are used for the analysis. The rest will be ignored.
 }
+\examples{
+\dontrun{
+set.seed(1)
+prev <- anthroplus_prevalence(
+  sex = c(1, 2),
+  age_in_months = rpois(100, 100),
+  height_in_cm = rnorm(100, 100, 10),
+  weight_in_kg = rnorm(100, 40, 10)
+)
+prev[, c(1, 4, 5, 6)]
+}
+}
