@@ -1,5 +1,5 @@
 Package: anthroplus
-Title: Computation of the WHO 2007 References for School-age Children and
+Title: Computation of the WHO 2007 References for School-Age Children and
        Adolescents (5 to 19 Years)
 Version: 0.0.0.9007
 Authors@R: c(person("Dirk", "Schumacher", ,
