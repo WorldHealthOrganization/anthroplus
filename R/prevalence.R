@@ -91,7 +91,6 @@
 #' between 61 and 120.
 #'
 #' @examples
-#' \dontrun{
 #' set.seed(1)
 #' prev <- anthroplus_prevalence(
 #'   sex = c(1, 2),
@@ -100,7 +99,6 @@
 #'   weight_in_kg = rnorm(100, 40, 10)
 #' )
 #' prev[, c(1, 4, 5, 6)]
-#' }
 #' @export
 #' @include zscores.R
 #' @importFrom anthro anthro_api_compute_prevalence
