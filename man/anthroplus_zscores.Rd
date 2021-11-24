@@ -42,14 +42,7 @@ calculated if missing.}
 
 \item{weight_in_kg}{A numeric variable containing body weight information,
 which must be in kilograms. Weight-related z-scores are not
-calculated if missing.
-
-The following age cutoffs are used:
-\itemize{
-\item{Height-for-age} age between 61 and 228 months inclusive
-\item{Weight-for-age} age between 61 and 120 months inclusive
-\item{BMI-for-age} age between 61 and 228 months inclusive
-}}
+calculated if missing.}
 }
 \value{
 A data.frame with three types of columns. Columns starting with a
@@ -79,6 +72,14 @@ The following columns are returned:
 }
 \description{
 Compute z-scores for age 5 to 19
+}
+\details{
+The following age cutoffs are used:
+\itemize{
+\item{Height-for-age} age between 61 and 228 months inclusive
+\item{Weight-for-age} age between 61 and 120 months inclusive
+\item{BMI-for-age} age between 61 and 228 months inclusive
+}
 }
 \examples{
 anthroplus_zscores(

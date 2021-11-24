@@ -27,6 +27,7 @@
 #'               which must be in kilograms. Weight-related z-scores are not
 #'               calculated if missing.
 #'
+#' @details
 #' The following age cutoffs are used:
 #' \itemize{
 #' \item{Height-for-age} age between 61 and 228 months inclusive

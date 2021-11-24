@@ -13,8 +13,8 @@
 #'
 #'
 #' Note: the function temporarily sets the \code{survey} option
-#' \code{survey.lonely.psu} to "adjust" and then restores the original values.
-#' The function is a wrapper around the \code{survey} package to compute
+#' \code{survey.lonely.psu} to "adjust" and then restores the original value.
+#' It is a wrapper around the \code{survey} package to compute
 #' estimates for the different groups (e.g. by age or sex).
 #'
 #' If not all parameter values have equal length, parameter values will be
@@ -29,8 +29,8 @@
 #' If NULL, no sampling weights are used.
 #'
 #' @param cluster An optional integer vector representing clusters. If the value
-#' is NULL this is treated as a survey without a cluster. This is also the case
-#' if all values are equal, then we assume there is also no cluster.
+#' is NULL this is treated as a survey without clusters. This is also the case
+#' if all values are equal, then it is assumed there are also no clusters.
 #'
 #' @param strata An optional integer vector representing strata. Pass NULL to
 #' indicate that there are no strata.
