@@ -191,8 +191,10 @@ anthroplus_prevalence <- function(sex,
       )
     ),
     survey_subsets = setNames(
-      list("all", "sex", "age_groups", "wider_age_group",
-           "sex_wider_age_group"),
+      list(
+        "all", "sex", "age_groups", "wider_age_group",
+        "sex_wider_age_group"
+      ),
       c("All", "Sex", "Age Group 1", "Age Group 2", "Age + Sex")
     )
   )

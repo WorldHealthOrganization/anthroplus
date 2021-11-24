@@ -135,9 +135,9 @@ zscore_weight_for_age <- function(sex, age_in_months, oedema,
                                   weight) {
   weight[oedema == "y"] <- NA_real_
   zscore_indicator(sex, age_in_months, weight,
-                   wfa_growth_standards,
-                   age_upper_bound = WFA_UPPER_AGE_LIMIT,
-                   zscore_fun = anthro_api_compute_zscore_adjusted
+    wfa_growth_standards,
+    age_upper_bound = WFA_UPPER_AGE_LIMIT,
+    zscore_fun = anthro_api_compute_zscore_adjusted
   )
 }
 
@@ -145,9 +145,9 @@ zscore_weight_for_age <- function(sex, age_in_months, oedema,
 zscore_height_for_age <- function(sex, age_in_months,
                                   height) {
   zscore_indicator(sex, age_in_months, height,
-                   hfa_growth_standards,
-                   age_upper_bound = 228,
-                   zscore_fun = anthro_api_compute_zscore
+    hfa_growth_standards,
+    age_upper_bound = 228,
+    zscore_fun = anthro_api_compute_zscore
   )
 }
 
@@ -156,9 +156,9 @@ zscore_bmi_for_age <- function(sex, age_in_months, oedema,
                                bmi) {
   bmi[oedema == "y"] <- NA_real_
   zscore_indicator(sex, age_in_months, bmi,
-                   bfa_growth_standards,
-                   age_upper_bound = 228,
-                   zscore_fun = anthro_api_compute_zscore_adjusted
+    bfa_growth_standards,
+    age_upper_bound = 228,
+    zscore_fun = anthro_api_compute_zscore_adjusted
   )
 }
 
@@ -178,14 +178,14 @@ zscore_indicator <- function(sex,
     ordering = seq_along(sex)
   )
   match_low_age <- merge(data, growth_standards,
-                         by.x = c("sex", "low_age"),
-                         by.y = c("sex", "age"),
-                         all.x = TRUE, sort = FALSE
+    by.x = c("sex", "low_age"),
+    by.y = c("sex", "age"),
+    all.x = TRUE, sort = FALSE
   )
   match_upp_age <- merge(data, growth_standards,
-                         by.x = c("sex", "upp_age"),
-                         by.y = c("sex", "age"),
-                         all.x = TRUE, sort = FALSE
+    by.x = c("sex", "upp_age"),
+    by.y = c("sex", "age"),
+    all.x = TRUE, sort = FALSE
   )
   match_low_age <- match_low_age[order(match_low_age$ordering), ]
   match_upp_age <- match_upp_age[order(match_upp_age$ordering), ]
