@@ -80,3 +80,11 @@ The following columns are returned:
 \description{
 Compute z-scores for age 5 to 19
 }
+\examples{
+anthroplus_zscores(
+  sex = c("f", "m"),
+  age_in_months = c(100, 110),
+  height_in_cm = c(100, 90),
+  weight_in_kg = c(30, 40)
+)
+}

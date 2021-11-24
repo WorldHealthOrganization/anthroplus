@@ -59,6 +59,13 @@
 #'
 #' }
 #'
+#' @examples
+#' anthroplus_zscores(
+#'   sex = c("f", "m"),
+#'   age_in_months = c(100, 110),
+#'   height_in_cm = c(100, 90),
+#'   weight_in_kg = c(30, 40)
+#' )
 #' @export
 #' @importFrom anthro anthro_api_standardize_oedema_var
 #' @importFrom anthro anthro_api_standardize_sex_var
