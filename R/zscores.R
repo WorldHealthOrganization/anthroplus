@@ -30,9 +30,9 @@
 #' @details
 #' The following age cutoffs are used:
 #' \itemize{
-#' \item{Height-for-age} age between 61 and 228 months inclusive
-#' \item{Weight-for-age} age between 61 and 120 months inclusive
-#' \item{BMI-for-age} age between 61 and 228 months inclusive
+#' \item{Height-for-age} age between 60 and 228 months inclusive
+#' \item{Weight-for-age} age between 60 and 120 months inclusive
+#' \item{BMI-for-age} age between 60 and 228 months inclusive
 #' }
 #'
 #' @return A data.frame with three types of columns. Columns starting with a
@@ -215,7 +215,7 @@ zscore_indicator <- function(sex,
   }
   zscores <- zscore_fun(measure, m, l, s)
   has_invalid_valid_age <- is.na(age_in_months) |
-    !(age_in_months >= 61 & age_in_months <= age_upper_bound)
+    !(age_in_months >= 60 & age_in_months <= age_upper_bound)
   zscores[has_invalid_valid_age] <- NA_real_
   zscores
 }

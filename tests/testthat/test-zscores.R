@@ -24,6 +24,21 @@ test_that("zscore references match from previous implementation", {
   expect_equal(result$age_in_months, data$agemons)
 })
 
+test_that("computes correct value for age ~ 60 months", {
+  res <- anthroplus_zscores(
+    sex = c(2, 2),
+    age_in_months = c(60.32, 60.911701),
+    height_in_cm = c(113.8, 113.6),
+    weight_in_kg = c(18.7, 20.5)
+  )
+  expect_equal(res$zwfa, c(0.21, 0.79))
+  expect_equal(res$fwfa, c(0, 0))
+  expect_equal(res$zbfa, c(-0.58, 0.42))
+  expect_equal(res$fbfa, c(0, 0))
+  expect_equal(res$zhfa, c(0.96, 0.85))
+  expect_equal(res$fhfa, c(0, 0))
+})
+
 test_that("different sex encodings work", {
   expect_equal(
     anthroplus_zscores(1, 120, height_in_cm = 60, weight_in_kg = 30),
@@ -104,7 +119,7 @@ test_that("oedema = y implies NA for weight-for-age and bmi-for-age", {
   expect_false(is.na(res2$fbfa))
 })
 
-test_that("Age upper bounds are inclusive", {
+test_that("age upper bounds are inclusive", {
   res <- anthroplus_zscores(
     1, c(120, 228, 120.1, 228.1),
     height_in_cm = 60,
@@ -113,4 +128,29 @@ test_that("Age upper bounds are inclusive", {
   expect_equal(is.na(res$zhfa), c(FALSE, FALSE, FALSE, TRUE))
   expect_equal(is.na(res$zwfa), c(FALSE, TRUE, TRUE, TRUE))
   expect_equal(is.na(res$zbfa), c(FALSE, FALSE, FALSE, TRUE))
+})
+
+test_that("age >= 60 months is supported", {
+  res <- anthroplus_zscores(
+    1, 60,
+    height_in_cm = 60,
+    weight_in_kg = 30
+  )
+  expect_false(is.na(res$zhfa))
+  expect_false(is.na(res$zwfa))
+  expect_false(is.na(res$zbfa))
+})
+
+test_that("age < 60 months results in all NA scores and flags", {
+  res <- anthroplus_zscores(
+    1, 59,
+    height_in_cm = 60,
+    weight_in_kg = 30
+  )
+  expect_true(is.na(res$zhfa))
+  expect_true(is.na(res$zwfa))
+  expect_true(is.na(res$zbfa))
+  expect_true(is.na(res$fhfa))
+  expect_true(is.na(res$fwfa))
+  expect_true(is.na(res$fbfa))
 })

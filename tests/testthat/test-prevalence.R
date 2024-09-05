@@ -32,10 +32,10 @@ test_that("strata are considered correctly", {
   check_with_survey(input, strata = strata)
 })
 
-test_that("age only between 61 and 229 is considered", {
+test_that("age only between 60 and 229 is considered", {
   input <- readRDS("test_dataset_who2007.rds")
   input$agemons <- input$agemons * 2
-  input_filtered <- input[input$agemons >= 61 & input$agemons <= 228, ]
+  input_filtered <- input[input$agemons >= 60 & input$agemons <= 228, ]
   expect_warning(
     res1 <- anthroplus_prevalence(
       input$sex,
@@ -88,7 +88,7 @@ test_that("it fails if all values are filtered out", {
   expect_error(
     anthroplus_prevalence(
       1,
-      60,
+      59,
       "n",
       100,
       35,
@@ -211,4 +211,9 @@ test_that("'all' and 'sex w/o age' results are NA for WFA indicator", {
 test_that("age in months = 228 is part of the age group", {
   expect_false(is.na(prev_wider_age_groups(228)))
   expect_false(is.na(prev_age_groups(228)))
+})
+
+test_that("age in months = 60 is part of the age group", {
+  expect_false(is.na(prev_wider_age_groups(60)))
+  expect_false(is.na(prev_age_groups(60)))
 })

@@ -20,7 +20,7 @@
 #' If not all parameter values have equal length, parameter values will be
 #' repeated to match the maximum length.
 #'
-#' Only cases with age_in_months between 61 (including) and 228 months
+#' Only cases with age_in_months between 60 (including) and 228 months
 #' (including) are used for the analysis. The rest will be ignored.
 #'
 #' @inheritParams anthroplus_zscores
@@ -88,7 +88,7 @@
 #'
 #' Note that weight-for-age results are NA for the groups "All" and the two
 #' "Sex" groups, as the indicator is only defined for age in months
-#' between 61 and 120.
+#' between 60 and 120.
 #'
 #' @examples
 #' set.seed(1)
@@ -132,18 +132,18 @@ anthroplus_prevalence <- function(sex,
   }
   old_rows <- nrow(input)
   input <- input[!is.na(input$age_in_months) &
-    input$age_in_months >= 61 &
+    input$age_in_months >= 60 &
     input$age_in_months <= 228, , drop = FALSE]
   if (nrow(input) == 0) {
     stop(
-      "All age values are either NA or < 61 or > 228, which excludes all",
+      "All age values are either NA or < 60 or > 228, which excludes all",
       " cases from the analysis.",
       call. = FALSE
     )
   } else if (nrow(input) < old_rows) {
     warning(
       old_rows - nrow(input),
-      " row(s) with age NA or age < 61 months or > 228 months were excluded",
+      " row(s) with age NA or age < 60 months or > 228 months were excluded",
       " from the computation."
     )
   }
@@ -246,8 +246,8 @@ cbind_year_month_columns <- function(prev_results) {
       "Total (15-19)", "Total (15-19)" # female/male 3
     ),
     `Months` = c(
-      "(61-228)",
-      "(61-228)", "(61-228)",
+      "(60-228)",
+      "(60-228)", "(60-228)",
       paste0("(", gsub(" mo", "", prev_age_group_labels, fixed = TRUE), ")"),
       wider_labels,
       c(wider_labels[1], wider_labels[1]),
@@ -265,7 +265,7 @@ cbind_year_month_columns <- function(prev_results) {
 }
 
 prev_age_group_labels <- c(
-  "61-71 mo",
+  "60-71 mo",
   "72-83 mo",
   "84-95 mo",
   "96-107 mo",
@@ -281,10 +281,11 @@ prev_age_group_labels <- c(
   "216-227 mo",
   "228-228 mo"
 )
+
 prev_age_groups <- function(age_in_months) {
   stopifnot(is.numeric(age_in_months), all(age_in_months <= 228, na.rm = TRUE))
   cut_breaks <- c(
-    61, 72, 84, 96, 108, 120, 132,
+    60, 72, 84, 96, 108, 120, 132,
     144, 156, 168, 180, 192, 204, 216, 228, 229
   )
   cut(age_in_months,
@@ -295,13 +296,14 @@ prev_age_groups <- function(age_in_months) {
 }
 
 prev_wider_age_group_labels <- c(
-  "61-119 mo",
+  "60-119 mo",
   "120-179 mo",
   "180-228 mo"
 )
+
 prev_wider_age_groups <- function(age_in_months) {
   stopifnot(is.numeric(age_in_months), all(age_in_months <= 228, na.rm = TRUE))
-  cut_breaks <- c(61, 120, 180, 229)
+  cut_breaks <- c(60, 120, 180, 229)
   cut(age_in_months,
     breaks = cut_breaks,
     labels = prev_wider_age_group_labels,
