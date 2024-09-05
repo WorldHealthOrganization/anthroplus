@@ -110,7 +110,7 @@ interval limit}
 
 Note that weight-for-age results are NA for the groups "All" and the two
 "Sex" groups, as the indicator is only defined for age in months
-between 61 and 120.
+between 60 and 120.
 }
 \description{
 Prevalence estimates according to the WHO recommended standard analysis:
@@ -133,7 +133,7 @@ estimates for the different groups (e.g. by age or sex).
 If not all parameter values have equal length, parameter values will be
 repeated to match the maximum length.
 
-Only cases with age_in_months between 61 (including) and 228 months
+Only cases with age_in_months between 60 (including) and 228 months
 (including) are used for the analysis. The rest will be ignored.
 }
 \examples{
