@@ -76,9 +76,9 @@ Compute z-scores for age 5 to 19
 \details{
 The following age cutoffs are used:
 \itemize{
-\item{Height-for-age} age between 61 and 228 months inclusive
-\item{Weight-for-age} age between 61 and 120 months inclusive
-\item{BMI-for-age} age between 61 and 228 months inclusive
+\item{Height-for-age} age between 60 and 228 months inclusive
+\item{Weight-for-age} age between 60 and 120 months inclusive
+\item{BMI-for-age} age between 60 and 228 months inclusive
 }
 }
 \examples{
