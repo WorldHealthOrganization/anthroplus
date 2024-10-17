@@ -32,3 +32,5 @@ Collate:
     'data.R'
     'zscores.R'
     'prevalence.R'
+URL: https://github.com/WorldHealthOrganization/anthroplus
+BugReports: https://github.com/WorldHealthOrganization/anthroplus/issues
