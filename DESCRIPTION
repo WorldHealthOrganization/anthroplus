@@ -1,7 +1,7 @@
 Package: anthroplus
 Title: Computation of the WHO 2007 References for School-Age Children and
        Adolescents (5 to 19 Years)
-Version: 0.9.0.9000
+Version: 1.0.0.9000
 Authors@R: c(person("Dirk", "Schumacher", ,
                     "mail@dirk-schumacher.net", c("aut", "cre")),
              person("Elaine", "Borghi", , "borghie@who.int", "ctb"),
@@ -32,3 +32,5 @@ Collate:
     'data.R'
     'zscores.R'
     'prevalence.R'
+URL: https://github.com/WorldHealthOrganization/anthroplus
+BugReports: https://github.com/WorldHealthOrganization/anthroplus/issues

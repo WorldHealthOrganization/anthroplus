@@ -88,7 +88,7 @@ anthroplus_prevalence(
 #> 1                           All      64         64  79.6875
 #> 2                   Sex: Female      32         32  81.2500
 #> 3                     Sex: Male      32         32  78.1250
-#> 4         Age Group 1: 61-71 mo       0          0       NA
+#> 4         Age Group 1: 60-71 mo       0          0       NA
 #> 5         Age Group 1: 72-83 mo       2          2   0.0000
 #> 6         Age Group 1: 84-95 mo      16         16  75.0000
 #> 7        Age Group 1: 96-107 mo      35         35  80.0000
@@ -103,11 +103,11 @@ anthroplus_prevalence(
 #> 16      Age Group 1: 204-215 mo       0          0       NA
 #> 17      Age Group 1: 216-227 mo       0          0       NA
 #> 18      Age Group 1: 228-228 mo       0          0       NA
-#> 19       Age Group 2: 61-119 mo      64         64  79.6875
+#> 19       Age Group 2: 60-119 mo      64         64  79.6875
 #> 20      Age Group 2: 120-179 mo       0          0       NA
 #> 21      Age Group 2: 180-228 mo       0          0       NA
-#> 22  Age + Sex: Female.61-119 mo      32         32  81.2500
-#> 23    Age + Sex: Male.61-119 mo      32         32  78.1250
+#> 22  Age + Sex: Female.60-119 mo      32         32  81.2500
+#> 23    Age + Sex: Male.60-119 mo      32         32  78.1250
 #> 24 Age + Sex: Female.120-179 mo       0          0       NA
 #> 25   Age + Sex: Male.120-179 mo       0          0       NA
 #> 26 Age + Sex: Female.180-228 mo       0          0       NA
