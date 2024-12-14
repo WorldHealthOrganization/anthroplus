@@ -35,7 +35,7 @@ test_that("strata are considered correctly", {
 test_that("age only between 60 and 229 is considered", {
   input <- readRDS("test_dataset_who2007.rds")
   input$agemons <- input$agemons * 2
-  input_filtered <- input[input$agemons >= 60 & input$agemons <= 228, ]
+  input_filtered <- input[input$agemons >= 60 & input$agemons < 229, ]
   expect_warning(
     res1 <- anthroplus_prevalence(
       input$sex,
@@ -216,4 +216,19 @@ test_that("age in months = 228 is part of the age group", {
 test_that("age in months = 60 is part of the age group", {
   expect_false(is.na(prev_wider_age_groups(60)))
   expect_false(is.na(prev_age_groups(60)))
+})
+
+test_that("age between 228 and < 229 are included", {
+  expect_warning(
+    {
+      res <- anthroplus_prevalence(
+        c("1", "2", "2", "1"),
+        c(228.1, 228.2, 228.9, 229),
+        "n",
+        100,
+        35
+      )
+    },
+    "1 row"
+  )
 })
