@@ -187,10 +187,10 @@ anthroplus_prevalence <- function(sex,
         name = "WA", column = "wfa",
         with_cutoffs = TRUE, with_auxiliary_zscore_column = TRUE,
         auxiliary_zscore_condition = function(dataframe) {
-          # for wfa the age limit is 120 and thus below 228.
+          # for wfa the age limit is 120 and thus below 229
           # we need to make sure z-scores are only set to -3.1 if the age is
           # in range
-          dataframe[["age_in_months"]] <= WFA_UPPER_AGE_LIMIT &
+          dataframe[["age_in_months"]] < WFA_UPPER_AGE_LIMIT &
             dataframe[["oedema"]] %in% "y"
         }
       ),

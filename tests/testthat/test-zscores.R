@@ -1,8 +1,5 @@
 test_that("zscore references match from previous implementation", {
   data <- readRDS("test_dataset_who2007.rds")
-  # unlike the WHO 2007, the age upper limits are inclusive
-  data$zwfa[data$agemons > 120] <- NA_real_
-  data$fwfa[data$agemons > 120] <- NA_real_
   result <- anthroplus_zscores(
     sex = data$sex,
     age_in_months = data$agemons,
@@ -117,7 +114,7 @@ test_that("oedema = y implies NA for weight-for-age and bmi-for-age", {
 
 test_that("age upper bounds are exclusive", {
   res <- anthroplus_zscores(
-    1, c(120, 228.5, 120.1, 229),
+    1, c(120, 228.5, 121, 229),
     height_in_cm = 60,
     weight_in_kg = 30
   )
