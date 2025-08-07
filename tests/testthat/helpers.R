@@ -3,17 +3,15 @@ check_with_survey <- function(input,
                               sampling_weights = NULL,
                               cluster = NULL,
                               strata = NULL) {
-  expect_warning(
-    res <- anthroplus_prevalence(
-      input$sex,
-      input$agemons,
-      input$oedema,
-      input$height,
-      input$weight,
-      sw = sampling_weights,
-      cluster = cluster,
-      strata = strata
-    ), "excluded"
+  res <- anthroplus_prevalence(
+    input$sex,
+    input$agemons,
+    input$oedema,
+    input$height,
+    input$weight,
+    sw = sampling_weights,
+    cluster = cluster,
+    strata = strata
   )
   zscores <- anthroplus_zscores(
     input$sex,
@@ -37,7 +35,7 @@ check_with_survey <- function(input,
     zscores$strata <- strata
     ~strata
   }
-  zscores <- zscores[zscores$agemons <= 228, ]
+  zscores <- zscores[zscores$agemons < 229, ]
   design <- survey::svydesign(
     id = cluster, data = zscores,
     weights = sw, strata = strata, nest = TRUE

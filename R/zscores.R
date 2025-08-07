@@ -136,7 +136,7 @@ compute_bmi <- function(weight, height) {
   weight / ((height / 100)^2)
 }
 
-WFA_UPPER_AGE_LIMIT <- 120
+WFA_UPPER_AGE_LIMIT <- 121
 
 #' @importFrom anthro anthro_api_compute_zscore_adjusted
 zscore_weight_for_age <- function(sex, age_in_months, oedema,
@@ -154,7 +154,7 @@ zscore_height_for_age <- function(sex, age_in_months,
                                   height) {
   zscore_indicator(sex, age_in_months, height,
     hfa_growth_standards,
-    age_upper_bound = 228,
+    age_upper_bound = 229,
     zscore_fun = anthro_api_compute_zscore
   )
 }
@@ -165,7 +165,7 @@ zscore_bmi_for_age <- function(sex, age_in_months, oedema,
   bmi[oedema == "y"] <- NA_real_
   zscore_indicator(sex, age_in_months, bmi,
     bfa_growth_standards,
-    age_upper_bound = 228,
+    age_upper_bound = 229,
     zscore_fun = anthro_api_compute_zscore_adjusted
   )
 }
@@ -215,7 +215,7 @@ zscore_indicator <- function(sex,
   }
   zscores <- zscore_fun(measure, m, l, s)
   has_invalid_valid_age <- is.na(age_in_months) |
-    !(age_in_months >= 60 & age_in_months <= age_upper_bound)
+    !(age_in_months >= 60 & age_in_months < age_upper_bound)
   zscores[has_invalid_valid_age] <- NA_real_
   zscores
 }

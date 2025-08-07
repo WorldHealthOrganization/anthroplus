@@ -1,5 +1,9 @@
 # anthroplus (development version)
 
+* Increased the upper age limit to 229 months exclusive
+  from 228 months inclusive. Also the upper age limit of 121 months
+  for WFA is now exclusive.
+
 # anthroplus 1.0.0
 
 * The package now supports observations with age >= 60 months. Previously there

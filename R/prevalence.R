@@ -133,17 +133,17 @@ anthroplus_prevalence <- function(sex,
   old_rows <- nrow(input)
   input <- input[!is.na(input$age_in_months) &
     input$age_in_months >= 60 &
-    input$age_in_months <= 228, , drop = FALSE]
+    input$age_in_months < 229, , drop = FALSE]
   if (nrow(input) == 0) {
     stop(
-      "All age values are either NA or < 60 or > 228, which excludes all",
+      "All age values are either NA or < 60 or >= 229, which excludes all",
       " cases from the analysis.",
       call. = FALSE
     )
   } else if (nrow(input) < old_rows) {
     warning(
       old_rows - nrow(input),
-      " row(s) with age NA or age < 60 months or > 228 months were excluded",
+      " row(s) with age NA or age < 60 months or >= 229 months were excluded",
       " from the computation."
     )
   }
@@ -187,10 +187,10 @@ anthroplus_prevalence <- function(sex,
         name = "WA", column = "wfa",
         with_cutoffs = TRUE, with_auxiliary_zscore_column = TRUE,
         auxiliary_zscore_condition = function(dataframe) {
-          # for wfa the age limit is 120 and thus below 228.
+          # for wfa the age limit is 120 and thus below 229
           # we need to make sure z-scores are only set to -3.1 if the age is
           # in range
-          dataframe[["age_in_months"]] <= WFA_UPPER_AGE_LIMIT &
+          dataframe[["age_in_months"]] < WFA_UPPER_AGE_LIMIT &
             dataframe[["oedema"]] %in% "y"
         }
       ),
@@ -283,7 +283,7 @@ prev_age_group_labels <- c(
 )
 
 prev_age_groups <- function(age_in_months) {
-  stopifnot(is.numeric(age_in_months), all(age_in_months <= 228, na.rm = TRUE))
+  stopifnot(is.numeric(age_in_months), all(age_in_months < 229, na.rm = TRUE))
   cut_breaks <- c(
     60, 72, 84, 96, 108, 120, 132,
     144, 156, 168, 180, 192, 204, 216, 228, 229
@@ -302,7 +302,7 @@ prev_wider_age_group_labels <- c(
 )
 
 prev_wider_age_groups <- function(age_in_months) {
-  stopifnot(is.numeric(age_in_months), all(age_in_months <= 228, na.rm = TRUE))
+  stopifnot(is.numeric(age_in_months), all(age_in_months < 229, na.rm = TRUE))
   cut_breaks <- c(60, 120, 180, 229)
   cut(age_in_months,
     breaks = cut_breaks,
