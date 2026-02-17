@@ -26,7 +26,8 @@
 #' @param weight_in_kg A numeric variable containing body weight information,
 #'               which must be in kilograms. Weight-related z-scores are not
 #'               calculated if missing.
-#' @param z_precision An integer specifying the number of digits to round the z-scores to. The default is 2.
+#' @param z_precision An integer (use an integer literal, e.g. 3L) specifying the number of digits to round the z-scores to. The default is 2L.
+#' Non-integer numeric values (for example `3`) are not accepted; pass an integer like `3L`.
 #'
 #' @details
 #' The following age cutoffs are used:
