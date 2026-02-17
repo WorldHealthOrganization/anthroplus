@@ -26,6 +26,7 @@
 #' @param weight_in_kg A numeric variable containing body weight information,
 #'               which must be in kilograms. Weight-related z-scores are not
 #'               calculated if missing.
+#' @param z_precision An integer specifying the number of digits to round the z-scores to. The default is 2.
 #'
 #' @details
 #' The following age cutoffs are used:
@@ -74,12 +75,14 @@ anthroplus_zscores <- function(sex,
                                age_in_months = NA_real_,
                                oedema = NA_character_,
                                height_in_cm = NA_real_,
-                               weight_in_kg = NA_real_) {
+                               weight_in_kg = NA_real_,
+                               z_precision = 2L) {
   stopifnot(all(tolower(sex) %in% c("1", "2", "f", "m", NA_character_)))
   stopifnot(all(tolower(oedema) %in% c("1", "2", "y", "n", NA_character_)))
   stopifnot(all(age_in_months >= 0, na.rm = TRUE))
   stopifnot(all(height_in_cm >= 0, na.rm = TRUE))
   stopifnot(all(weight_in_kg >= 0, na.rm = TRUE))
+  stopifnot(is.integer(z_precision) && z_precision >= 0)
 
   input <- data.frame(sex, age_in_months, oedema, height_in_cm, weight_in_kg)
 
@@ -100,9 +103,9 @@ anthroplus_zscores <- function(sex,
     oedema = coedema, bmi = cbmi
   )
 
-  zhfa <- round(zhfa, digits = 2L)
-  zwfa <- round(zwfa, digits = 2L)
-  zbfa <- round(zbfa, digits = 2L)
+  zhfa <- round(zhfa, digits = z_precision)
+  zwfa <- round(zwfa, digits = z_precision)
+  zbfa <- round(zbfa, digits = z_precision)
 
   fhfa <- flag_scores(zhfa, !is.na(zhfa) & abs(zhfa) > 6)
   fwfa <- flag_scores(zwfa, !is.na(zwfa) & (zwfa > 5 | zwfa < -6))
