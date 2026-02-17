@@ -3,8 +3,8 @@ Title: Computation of the WHO 2007 References for School-Age Children and
        Adolescents (5 to 19 Years)
 Version: 1.0.0.9000
 Authors@R: c(person("Dirk", "Schumacher", ,
-                    "mail@dirk-schumacher.net", c("aut", "cre")),
-             person("Elaine", "Borghi", , "borghie@who.int", "ctb"),
+                    "mail@dirk-schumacher.net", "aut"),
+             person("Elaine", "Borghi", , "nfsdata@who.int", c("ctb", "cre")),
              person("Giovanna", "Gatica-Domínguez", ,
                     "gaticag@who.int", "ctb"),
              person(given = "World Health Organization", role = "cph"))
