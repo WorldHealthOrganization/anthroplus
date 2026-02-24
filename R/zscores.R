@@ -93,15 +93,18 @@ anthroplus_zscores <- function(sex,
 
   zhfa <- zscore_height_for_age(
     sex = csex, age_in_months = input$age_in_months,
-    height = input$height_in_cm
+    height = input$height_in_cm,
+    z_precision = z_precision
   )
   zwfa <- zscore_weight_for_age(
     sex = csex, age_in_months = input$age_in_months,
-    oedema = coedema, weight = input$weight_in_kg
+    oedema = coedema, weight = input$weight_in_kg,
+    z_precision = z_precision
   )
   zbfa <- zscore_bmi_for_age(
     sex = csex, age_in_months = input$age_in_months,
-    oedema = coedema, bmi = cbmi
+    oedema = coedema, bmi = cbmi,
+    z_precision = z_precision
   )
 
   zhfa <- round(zhfa, digits = z_precision)
@@ -144,33 +147,36 @@ WFA_UPPER_AGE_LIMIT <- 121
 
 #' @importFrom anthro anthro_api_compute_zscore_adjusted
 zscore_weight_for_age <- function(sex, age_in_months, oedema,
-                                  weight) {
+                                  weight, z_precision = 2L) {
   weight[oedema == "y"] <- NA_real_
   zscore_indicator(sex, age_in_months, weight,
     wfa_growth_standards,
     age_upper_bound = WFA_UPPER_AGE_LIMIT,
-    zscore_fun = anthro_api_compute_zscore_adjusted
+    zscore_fun = anthro_api_compute_zscore_adjusted,
+    z_precision = z_precision
   )
 }
 
 #' @importFrom anthro anthro_api_compute_zscore
 zscore_height_for_age <- function(sex, age_in_months,
-                                  height) {
+                                  height, z_precision = 2L) {
   zscore_indicator(sex, age_in_months, height,
     hfa_growth_standards,
     age_upper_bound = 229,
-    zscore_fun = anthro_api_compute_zscore
+    zscore_fun = anthro_api_compute_zscore,
+    z_precision = z_precision
   )
 }
 
 #' @importFrom anthro anthro_api_compute_zscore_adjusted
 zscore_bmi_for_age <- function(sex, age_in_months, oedema,
-                               bmi) {
+                               bmi, z_precision = 2L) {
   bmi[oedema == "y"] <- NA_real_
   zscore_indicator(sex, age_in_months, bmi,
     bfa_growth_standards,
     age_upper_bound = 229,
-    zscore_fun = anthro_api_compute_zscore_adjusted
+    zscore_fun = anthro_api_compute_zscore_adjusted,
+    z_precision = z_precision
   )
 }
 
@@ -179,7 +185,8 @@ zscore_indicator <- function(sex,
                              measure,
                              growth_standards,
                              age_upper_bound,
-                             zscore_fun) {
+                             zscore_fun,
+                             z_precision = 2L) {
   low_age <- trunc(age_in_months)
   upp_age <- trunc(age_in_months + 1)
   diff_age <- age_in_months - low_age
@@ -217,7 +224,7 @@ zscore_indicator <- function(sex,
     l[is_diff_age_pos] <- adjust_param(l)
     s[is_diff_age_pos] <- adjust_param(s)
   }
-  zscores <- zscore_fun(measure, m, l, s)
+  zscores <- zscore_fun(measure, m, l, s, z_precision = z_precision)
   has_invalid_valid_age <- is.na(age_in_months) |
     !(age_in_months >= 60 & age_in_months < age_upper_bound)
   zscores[has_invalid_valid_age] <- NA_real_
