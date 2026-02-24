@@ -1,4 +1,4 @@
-# anthroplus (development version)
+# anthroplus 1.1.0
 
 * Increased the upper age limit to 229 months exclusive
   from 228 months inclusive. Also the upper age limit of 121 months
