@@ -32,6 +32,22 @@ test_that("computes correct value for age ~ 60 months", {
   expect_equal(res$fhfa, c(0, 0))
 })
 
+test_that("computes correct value for age ~ 60 months and precision of 3dp", {
+  res <- anthroplus_zscores(
+    sex = c(2, 2),
+    age_in_months = c(60.32, 60.911701),
+    height_in_cm = c(113.8, 113.6),
+    weight_in_kg = c(18.7, 20.5),
+    z_precision = 3L
+  )
+  expect_equal(res$zwfa, c(0.212, 0.795))
+  expect_equal(res$fwfa, c(0, 0))
+  expect_equal(res$zbfa, c(-0.575, 0.418))
+  expect_equal(res$fbfa, c(0, 0))
+  expect_equal(res$zhfa, c(0.959, 0.848))
+  expect_equal(res$fhfa, c(0, 0))
+})
+
 test_that("different sex encodings work", {
   expect_equal(
     anthroplus_zscores(1, 120, height_in_cm = 60, weight_in_kg = 30),
@@ -146,4 +162,33 @@ test_that("age < 60 months results in all NA scores and flags", {
   expect_true(is.na(res$fhfa))
   expect_true(is.na(res$fwfa))
   expect_true(is.na(res$fbfa))
+})
+
+test_that("z_precision validation: non-integer and negative values are rejected", {
+  # non-integer numeric (double) should error
+  expect_error(anthroplus_zscores(
+    sex = 2,
+    age_in_months = 60,
+    height_in_cm = 120,
+    weight_in_kg = 30,
+    z_precision = 3
+  ))
+
+  # negative integer should error
+  expect_error(anthroplus_zscores(
+    sex = 2,
+    age_in_months = 60,
+    height_in_cm = 120,
+    weight_in_kg = 30,
+    z_precision = -1L
+  ))
+
+  # accept integer literal
+  expect_silent(anthroplus_zscores(
+    sex = 2,
+    age_in_months = 60,
+    height_in_cm = 120,
+    weight_in_kg = 30,
+    z_precision = 3L
+  ))
 })

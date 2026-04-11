@@ -24,7 +24,12 @@
 #' (including) are used for the analysis. The rest will be ignored.
 #'
 #' @inheritParams anthroplus_zscores
-#'
+
+#' @param z_precision An integer (use an integer literal, e.g. 3L) specifying the number
+#' of digits to round z-scores to in the prevalence output. The default
+#' is 2L. Non-integer numeric values are not accepted; pass an integer like
+#' `3L`.
+
 #' @param sw An optional numeric vector containing the sampling weights.
 #' If NULL, no sampling weights are used.
 #'
@@ -108,6 +113,7 @@ anthroplus_prevalence <- function(sex,
                                   oedema = "n",
                                   height_in_cm = NA_real_,
                                   weight_in_kg = NA_real_,
+                                  z_precision = 2L,
                                   sw = NULL,
                                   cluster = NULL,
                                   strata = NULL) {
@@ -119,6 +125,7 @@ anthroplus_prevalence <- function(sex,
   stopifnot(is.null(cluster) || is.numeric(cluster))
   stopifnot(is.null(strata) || is.numeric(strata))
   stopifnot(is.null(sw) || is.numeric(sw))
+  stopifnot(is.integer(z_precision) && z_precision >= 0)
 
   input <- data.frame(sex, age_in_months, oedema, height_in_cm, weight_in_kg)
   if (!is.null(cluster)) {
@@ -149,7 +156,8 @@ anthroplus_prevalence <- function(sex,
   }
   zscores <- anthroplus_zscores(
     input$sex, input$age_in_months,
-    input$oedema, input$height_in_cm, input$weight_in_kg
+    input$oedema, input$height_in_cm, input$weight_in_kg,
+    z_precision = z_precision
   )
   # age in months is also part of the z-score output
   zscores$age_in_months <- NULL

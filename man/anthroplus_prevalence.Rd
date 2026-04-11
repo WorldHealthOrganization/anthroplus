@@ -10,6 +10,7 @@ anthroplus_prevalence(
   oedema = "n",
   height_in_cm = NA_real_,
   weight_in_kg = NA_real_,
+  z_precision = 2L,
   sw = NULL,
   cluster = NULL,
   strata = NULL
@@ -46,6 +47,11 @@ calculated if missing.}
 \item{weight_in_kg}{A numeric variable containing body weight information,
 which must be in kilograms. Weight-related z-scores are not
 calculated if missing.}
+
+\item{z_precision}{An integer (use an integer literal, e.g. 3L) specifying the number
+of digits to round z-scores to in the prevalence output. The default
+is 2L. Non-integer numeric values are not accepted; pass an integer like
+\code{3L}.}
 
 \item{sw}{An optional numeric vector containing the sampling weights.
 If NULL, no sampling weights are used.}
